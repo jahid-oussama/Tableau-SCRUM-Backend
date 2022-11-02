@@ -122,7 +122,7 @@ $gt = getTasks();
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
 						<img src="assets/img/user/user-13.jpg" alt="" />
 						<span>
-							<span class="d-none d-md-inline">Jilali Smith</span>
+							<span class="d-none d-md-inline">Jahid Oussama</span>
 							<b class="caret"></b>
 						</span>
 					</a>
@@ -228,7 +228,7 @@ $gt = getTasks();
 				</div>
 
 				<div class="ms-auto">
-					<a href="#modal-task" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add Task</a>
+					<a href="#modal-task" onclick="clear_task()" data-bs-toggle="modal" class="btn btn-success btn-rounded px-4 rounded-pill"><i class="fa fa-plus fa-lg me-2 ms-n2 text-success-900"></i> Add Task</a>
 				</div>
 			</div>
 
@@ -286,25 +286,25 @@ $gt = getTasks();
 
 
 
-									<button class="w-100 border-0 " onclick="get_task(<?php echo $task['id']  ?>)">
+									<button class="w-100 border-0 " id="<?php echo $task['id'] ?>" onclick="get_task(<?php echo $task['id']  ?>)">
 										<div class="">
 											<i class=""></i>
 										</div>
-										<div class="row">
+										<div class="row" id-status="<?php echo $task['status_id'] ?>">
 											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
 												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
 												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">
-													<div class="fs-5 fw-bold"><?php echo $task['title']  ?></div>
+													<div class="fs-5 fw-bold" data-task="<?php echo $task['title']  ?>"><?php echo $task['title']  ?></div>
 													<div class="">
-														<div class="fs-6 text-secondary "># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
-														<div class="fs-6 d-inline-block text-truncate" title="${task.description}" style="max-width:16rem"><?php echo $task['description']  ?></div>
+														<div class="fs-6 text-secondary " data-task="<?php echo $task['task_datetime']  ?>"># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
+														<div class="fs-6 d-inline-block text-truncate" data-task="<?php echo $task['description']  ?>" style="max-width:16rem"><?php echo $task['description']  ?></div>
 													</div>
 													<div class="">
-														<span class="btn btn-primary btn-sm lh-1 rounded-pill"><?php echo $task['priority']  ?></span>
-														<span class="btn btn-secondary btn-sm lh-1 rounded-pill "><?php echo $task['type']  ?></span>
+														<span class="btn btn-primary btn-sm lh-1 rounded-pill" data-task="<?php echo $task['priority_id']  ?>"><?php echo $task['priority']  ?></span>
+														<span class="btn btn-secondary btn-sm lh-1 rounded-pill " data-task="<?php echo $task['type']  ?>"><?php echo $task['type']  ?></span>
 													</div>
 												</div>
 											</div>
@@ -350,25 +350,25 @@ $gt = getTasks();
 
 
 
-									<button class="w-100 border-0 " onclick="get_task(<?php echo $task['id']  ?>)">
+									<button class="w-100 border-0 " id="<?php echo $task['id'] ?>" onclick="get_task(<?php echo $task['id']  ?>)">
 										<div class="">
 											<i class=""></i>
 										</div>
-										<div class="row">
+										<div class="row" id-status="<?php echo $task['status_id'] ?>">
 											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
 												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
 												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">
-													<div class="fs-5 fw-bold"><?php echo $task['title']  ?></div>
+													<div class="fs-5 fw-bold" data-task="<?php echo $task['title']  ?>"><?php echo $task['title']  ?></div>
 													<div class="">
-														<div class="fs-6 text-secondary "># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
-														<div class="fs-6 d-inline-block text-truncate" title="${task.description}" style="max-width:16rem"><?php echo $task['description']  ?></div>
+														<div class="fs-6 text-secondary " data-task="<?php echo $task['task_datetime']  ?>"># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
+														<div class="fs-6 d-inline-block text-truncate" data-task="<?php echo $task['description']  ?>" title="${task.description}" style="max-width:16rem"><?php echo $task['description']  ?></div>
 													</div>
 													<div class="">
-														<span class="btn btn-primary btn-sm lh-1 rounded-pill"><?php echo $task['priority']  ?></span>
-														<span class="btn btn-secondary btn-sm lh-1 rounded-pill "><?php echo $task['type']  ?></span>
+														<span class="btn btn-primary btn-sm lh-1 rounded-pill" data-task="<?php echo $task['priority_id']  ?>"><?php echo $task['priority']  ?></span>
+														<span class="btn btn-secondary btn-sm lh-1 rounded-pill " data-task="<?php echo $task['type']  ?>"><?php echo $task['type']  ?></span>
 													</div>
 												</div>
 											</div>
@@ -414,25 +414,25 @@ $gt = getTasks();
 
 
 
-									<button class="w-100 border-0 " onclick="get_task(<?php echo $task['id']  ?>)">
+									<button class="w-100 border-0 " id="<?php echo $task['id'] ?>" onclick="get_task(<?php echo $task['id']  ?>)">
 										<div class="">
 											<i class=""></i>
 										</div>
-										<div class="row">
+										<div class="row" id-status="<?php echo $task['status_id'] ?>">
 											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
 												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
 												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">
-													<div class="fs-5 fw-bold"><?php echo $task['title']  ?></div>
+													<div class="fs-5 fw-bold" data-task="<?php echo $task['title']  ?>"><?php echo $task['title']  ?></div>
 													<div class="">
-														<div class="fs-6 text-secondary "># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
-														<div class="fs-6 d-inline-block text-truncate" title="${task.description}" style="max-width:16rem"><?php echo $task['description']  ?></div>
+														<div class="fs-6 text-secondary " data-task="<?php echo $task['task_datetime']  ?>"># <?php echo $index + 1  ?> <?php echo $task['task_datetime']  ?> </div>
+														<div class="fs-6 d-inline-block text-truncate" data-task="<?php echo $task['description']  ?>" title="${task.description}" style="max-width:16rem"><?php echo $task['description']  ?></div>
 													</div>
 													<div class="">
-														<span class="btn btn-primary btn-sm lh-1 rounded-pill"><?php echo $task['priority']  ?></span>
-														<span class="btn btn-secondary btn-sm lh-1 rounded-pill "><?php echo $task['type']  ?></span>
+														<span class="btn btn-primary btn-sm lh-1 rounded-pill" data-task="<?php echo $task['priority_id']  ?>"><?php echo $task['priority']  ?></span>
+														<span class="btn btn-secondary btn-sm lh-1 rounded-pill " data-task="<?php echo $task['type']  ?>"><?php echo $task['type']  ?></span>
 													</div>
 												</div>
 											</div>
@@ -516,7 +516,7 @@ $gt = getTasks();
 						</div>
 						<div class="mb-3">
 							<label class="form-label">Date</label>
-							<input type="date" class="form-control" name="date" id="task-date" />
+							<input type="datetime-local" class="form-control" name="date" id="task-date" />
 						</div>
 						<div class="mb-0">
 							<label class="form-label">Description</label>

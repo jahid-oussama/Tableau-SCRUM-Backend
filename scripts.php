@@ -16,9 +16,16 @@ if (isset($_POST['delete']))      deleteTask();
 function getTasks()
 {
     global $conn;
-    $sql = "SELECT tasks.*,types.name as type,statuses.name as status,priorities.name as priority 
-    from tasks , types , statuses , priorities 
-    where tasks.type_id=types.id and tasks.status_id=statuses.id and tasks.priority_id=priorities.id";
+    // $sql = "SELECT tasks.*,types.name as type,statuses.name as status,priorities.name as priority 
+    // from tasks , types , statuses , priorities 
+    // where tasks.type_id=types.id and tasks.status_id=statuses.id and tasks.priority_id=priorities.id";
+
+    $sql = " SELECT tasks.*, statuses.name as status, types.name as type, priorities.name as priority 
+    from
+        tasks
+    inner join priorities on priorities.id = tasks.priority_id
+    inner join statuses on statuses.id = tasks.status_id 
+    inner join types on types.id = tasks.type_id";
 
     $res = mysqli_query($conn, $sql);
     return $res;
@@ -52,8 +59,28 @@ function saveTask()
 
 function updateTask()
 {
+    global $conn;
     //CODE HERE
-    //SQL UPDATE
+    $title = $_POST['title'];
+    $type = $_POST['task-type'];
+    $priority = $_POST['priority'];
+    $status = $_POST['status'];
+    $date = $_POST['date'];
+    $description = $_POST['description'];
+    $id = $_POST['task-id'];
+    $sql = "UPDATE `tasks` SET 
+    `title`='$title',
+    `type_id`='$type',
+    `priority_id`='$priority',
+    `status_id`='$status',
+    `task_datetime`='$date',
+    `description`='$description'
+     WHERE
+     `id`='$id'";
+
+    mysqli_query($conn, $sql);
+
+    //SQL INSERT
     $_SESSION['message'] = "Task has been updated successfully !";
     header('location: index.php');
 }
