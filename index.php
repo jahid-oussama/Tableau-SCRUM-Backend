@@ -15,6 +15,7 @@ $gt = getTasks();
 	<meta content="" name="author" />
 
 	<!-- ================== BEGIN core-css ================== -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="assets/css/vendor.min.css" rel="stylesheet" />
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
@@ -262,7 +263,7 @@ $gt = getTasks();
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">To do (<span id="to-do-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">To do (<span id="to-do-tasks-count"><?php echo counter(1)['count']; ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -281,19 +282,13 @@ $gt = getTasks();
 
 
 
-
-
-
-
-
 									<button class="w-100 border-0 " id="<?php echo $task['id'] ?>" onclick="get_task(<?php echo $task['id']  ?>)">
 										<div class="">
 											<i class=""></i>
 										</div>
 										<div class="row" id-status="<?php echo $task['status_id'] ?>">
-											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
-												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
-												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
+											<div class="col-1 py-3">
+												<i class="bi bi-question-circle-fill text-green fs-4"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">
@@ -327,7 +322,7 @@ $gt = getTasks();
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">In Progress (<span id="in-progress-tasks-count"><?php echo counter(2)['count']; ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -355,9 +350,8 @@ $gt = getTasks();
 											<i class=""></i>
 										</div>
 										<div class="row" id-status="<?php echo $task['status_id'] ?>">
-											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
-												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
-												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
+											<div class="col-1 py-3">
+												<i class="bi spinner-border spinner-border-sm text-green fs-4"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">
@@ -391,7 +385,7 @@ $gt = getTasks();
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">Done (<span id="done-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">Done (<span id="done-tasks-count"><?php echo counter(3)['count']; ?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -419,9 +413,8 @@ $gt = getTasks();
 											<i class=""></i>
 										</div>
 										<div class="row" id-status="<?php echo $task['status_id'] ?>">
-											<div class="col-1 py-3"><i class="bi ${icon} text-green fs-4"></i>
-												<i class="bi bi-pencil-square text-primary fs-4" onclick="editTask()"></i>
-												<i class="bi bi-x-circle-fill text-danger fs-4" onclick="deleteTask()"></i>
+											<div class="col-1 py-3">
+												<i class="bi bi-check2-square text-green fs-4"></i>
 											</div>
 											<div class="col-11 py-3">
 												<div class="text-start">

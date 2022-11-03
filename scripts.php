@@ -20,6 +20,8 @@ function getTasks()
     // from tasks , types , statuses , priorities 
     // where tasks.type_id=types.id and tasks.status_id=statuses.id and tasks.priority_id=priorities.id";
 
+
+    //requete sql =query
     $sql = " SELECT tasks.*, statuses.name as status, types.name as type, priorities.name as priority 
     from
         tasks
@@ -27,12 +29,32 @@ function getTasks()
     inner join statuses on statuses.id = tasks.status_id 
     inner join types on types.id = tasks.type_id";
 
+    //execute query conextion requete
     $res = mysqli_query($conn, $sql);
     return $res;
     //CODE HERE
     //SQL SELECT
 
 }
+function counter($status_id)
+{
+    global $conn;
+    // $sql = "SELECT tasks.*,types.name as type,statuses.name as status,priorities.name as priority 
+    // from tasks , types , statuses , priorities 
+    // where tasks.type_id=types.id and tasks.status_id=statuses.id and tasks.priority_id=priorities.id";
+
+
+    //requete sql =query
+    $sql = " SELECT count(id) as count from tasks where status_id = '$status_id' ";
+
+    //execute query conextion requete
+    $res = mysqli_query($conn, $sql);
+    return mysqli_fetch_assoc($res);
+    //CODE HERE
+    //SQL SELECT
+
+}
+
 
 function saveTask()
 {
@@ -50,6 +72,7 @@ function saveTask()
     VALUES
     ('$title','$type','$priority','$status','$date','$description')";
 
+    //execute query conextion requete
     mysqli_query($conn, $sql);
 
     //SQL INSERT
@@ -68,6 +91,8 @@ function updateTask()
     $date = $_POST['date'];
     $description = $_POST['description'];
     $id = $_POST['task-id'];
+
+
     $sql = "UPDATE `tasks` SET 
     `title`='$title',
     `type_id`='$type',
@@ -76,8 +101,9 @@ function updateTask()
     `task_datetime`='$date',
     `description`='$description'
      WHERE
-     `id`='$id'";
+     `id`='$id'";  // input hidden 
 
+    //execute query conextion requete
     mysqli_query($conn, $sql);
 
     //SQL INSERT
@@ -88,6 +114,8 @@ function updateTask()
 function deleteTask()
 {
     global $conn;
+
+    // input hidden
     $id = $_POST["task-id"];
     $sql = "DELETE FROM `tasks` WHERE id=$id";
 
